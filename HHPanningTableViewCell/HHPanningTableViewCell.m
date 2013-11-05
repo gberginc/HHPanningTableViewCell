@@ -522,6 +522,10 @@ static NSString *const												kTranslationContext		= @"translation";
 		}
 		else {
 			[self setDrawerRevealed:drawerRevealed direction:direction animated:YES];
+            
+            if ([self.delegate respondsToSelector:@selector(panningTableViewCell:didReveal:)]) {
+                [self.delegate panningTableViewCell:self didReveal:drawerRevealed];
+            }
 		}
 
 		self.panning = NO;
