@@ -279,10 +279,15 @@ static NSString *const												kTranslationContext		= @"translation";
 		CGFloat translation = 0.0f;
 
 		if (direction == HHPanningTableViewCellDirectionRight) {
-			translation = bounds.size.width - self.maximumPan;
+            if (self.maximumPan > 0) {
+                translation = self.maximumPan;
+            }
+            else {
+                translation = bounds.size.width;
+            }
 		}
 		else {
-			translation = -bounds.size.width + self.maximumPan;
+			translation = -bounds.size.width;
 		}
 
 		[self installViews];
